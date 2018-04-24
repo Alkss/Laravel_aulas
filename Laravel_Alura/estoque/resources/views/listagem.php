@@ -21,8 +21,8 @@
     foreach ($produtos as $produto) {
         ?>
         <tr>
-            <td>Nome: <?= $produto->nme_usuario ?></td>
-            <td>Valor: <?= $produto->idt_usuario ?></td>
+            <td>Nome:: <?= $produto->nme_usuario ?></td>
+            <td>Valor:: <?= $produto->idt_usuario ?></td>
         </tr>
         <?php
     }
