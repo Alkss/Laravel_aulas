@@ -14,7 +14,9 @@ class ProdutoController extends Controller
 {
     public function lista()
     {
+        //comentário
         $produtos = DB::select('SELECT * FROM tb_usuario');
+        $produtos2 = DB::select('SELECT * FROM tb_usuario');
         return view('listagem')->with('produtos',$produtos);
     }
 }
