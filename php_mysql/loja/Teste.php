@@ -3,9 +3,5 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 22/12/18
- * Time: 22:13
+ * Time: 23:44
  */
-?>
-<h1>
-    Bem vindo!
-</h1>
