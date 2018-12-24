@@ -15,7 +15,7 @@ function insereProduto($conexao, $nome, $preco)
 
 
 $nome_produto = $_GET['nome'];
-$preco_produto = $_GET['preco'];K
+$preco_produto = $_GET['preco'];
 $conexao = mysqli_connect('localhost', 'root', 'root', 'loja');
 
 if (insereProduto($conexao, $nome_produto, $preco_produto)) {
