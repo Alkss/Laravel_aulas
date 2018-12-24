@@ -9,10 +9,12 @@ include("header.php");
 include("banco-produto.php");
 
 
-$nome_produto = $_GET['nome'];
-$preco_produto = $_GET['preco'];
+$nome_produto = $_POST['nome'];
+$preco_produto = $_POST['preco'];
+$descricao = $_POST['descricao'];
+
 include("conecta.php");
-if (insereProduto($conexao, $nome_produto, $preco_produto)) {
+if (insereProduto($conexao, $nome_produto, $preco_produto, $descricao)) {
     ?>
     <p class="alert-sucess">Produto <?= $nome_produto ?>, custando <?= $preco_produto ?> adicionado com sucesso!</p>
     <?php

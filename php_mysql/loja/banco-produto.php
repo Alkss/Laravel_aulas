@@ -16,8 +16,14 @@ function listaProdutos($conexao)
     return $produtos;
 }
 
-function insereProduto($conexao, $nome, $preco)
+function insereProduto($conexao, $nome, $preco, $descricao)
 {
-    $query = "INSERT INTO produtos (nome, preco) VALUES('{$nome}', {$preco})";
+    $query = "INSERT INTO produtos (nome, preco, descricao) VALUES('{$nome}', {$preco}, '{$descricao}')";
+    return mysqli_query($conexao, $query);
+}
+
+function removeProduto($conexao, $id)
+{
+    $query = "DELETE FROM produtos WHERE id={$id}";
     return mysqli_query($conexao, $query);
 }
