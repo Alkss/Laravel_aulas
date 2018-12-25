@@ -8,12 +8,13 @@
 include("header.php");
 include("conecta.php");
 include("banco-produto.php");
+include("logica-usuario.php");
 
-if (isset($_GET['removido']) && $_GET['removido'] == "true") {
+if (isset($_SESSION['success'])) {
     ?>
-    <p class="alert alert-success"> Produto apagado com sucesso!</p>
+    <p class="alert alert-success"><?= $_SESSION['success'] ?>!</p>
     <?php
-    
+    unset($_SESSION['success']);
 }
 ?>
 

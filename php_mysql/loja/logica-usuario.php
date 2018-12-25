@@ -36,4 +36,5 @@ function deslogar()
 {
     unset($_SESSION['usuario_logado']);
     session_destroy();
+    session_start();
 }

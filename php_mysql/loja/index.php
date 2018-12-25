@@ -8,25 +8,16 @@
 
 include("header.php");
 include("logica-usuario.php");
-if (isset($_GET['login']) && $_GET['login'] == true) {
-    ?>
-    <p class="alert alert-success">Logado com sucesso!</p>
-    <?php
-} else if (isset($_GET['login']) && $_GET['login'] == false) {
-    ?>
-    <p class="alert alert-danger">Usuário ou senha inválida!</p>
-    <?php
-}
-if (isset($_SESSION['danger'])) {
-    ?>
-    <p class="alert alert-danger"><?= $_SESSION['danger'] ?></p>
-    <?php
-    unset($_SESSION['danger']);
-}
-if (isset($_GET['logout']) && $_GET['logout'] == true) {
-    ?>
-    <p class="alert alert-danger">Deslogado com sucesso.</p>
-    <?php
+
+
+function mostraAlerta($tipo)
+{
+    if (isset($_SESSION[$tipo])) {
+        ?>
+        <p class="alert alert-<?= $tipo ?>"><?= $_SESSION[$tipo] ?>!</p>
+        <?php
+        unset($_SESSION[$tipo]);
+    }
 }
 ?>
 

@@ -9,5 +9,6 @@
 include("logica-usuario.php");
 
 deslogar();
-header('location:index.php?logout=true');
+$_SESSION['success'] = "Deslogado com sucesso";
+header('location:index.php');
 die;

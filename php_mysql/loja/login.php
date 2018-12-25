@@ -8,14 +8,16 @@
 
 include("conecta.php");
 include("banco-usuario.php");
-include ("logica-usuario.php");
+include("logica-usuario.php");
 
 $usuario = buscaUsuario($conexao, $_POST['email'], $_POST['senha']);
 if ($usuario != null) {
     logaUsuario($_POST['email']);
-    header('location:index.php?login=1');
+    $_SESSION['success'] = "Usuário logado com sucesso.";
+    header('location:index.php');
 } else {
-    header('location:index.php?login=0');
+    $_SESSION['danger'] = "Login ou senha inválidos";
+    header('location:index.php');
 }
 die;
 

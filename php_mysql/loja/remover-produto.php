@@ -7,8 +7,10 @@
  */
 include("conecta.php");
 include("banco-produto.php");
+include("logica-usuario.php");
 
 $id = $_POST['id'];
 removeProduto($conexao, $id);
-header("location: produto-lista.php?removido=true");
+$_SESSION['success'] = "Produto removido com sucesso";
+header("location: produto-lista.php");
 die();
