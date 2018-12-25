@@ -12,9 +12,16 @@ include("banco-produto.php");
 $nome_produto = $_POST['nome'];
 $preco_produto = $_POST['preco'];
 $descricao = $_POST['descricao'];
+$categoria_id = $_POST['categoria_id'];
+
+if (isset($_POST['usado'])) {
+    $usado = 'true';
+} else {
+    $usado = 'false';
+}
 
 include("conecta.php");
-if (insereProduto($conexao, $nome_produto, $preco_produto, $descricao)) {
+if (insereProduto($conexao, $nome_produto, $preco_produto, $descricao, $categoria_id, $usado)) {
     ?>
     <p class="alert-sucess">Produto <?= $nome_produto ?>, custando <?= $preco_produto ?> adicionado com sucesso!</p>
     <?php

@@ -13,6 +13,7 @@ if (isset($_GET['removido']) && $_GET['removido'] == "true") {
     ?>
     <p class="alert alert-success"> Produto apagado com sucesso!</p>
     <?php
+    
 }
 ?>
 
@@ -25,6 +26,7 @@ if (isset($_GET['removido']) && $_GET['removido'] == "true") {
                 <td><?= $produto['nome'] ?></td>
                 <td><?= $produto['preco'] ?></td>
                 <td><?= $produto['descricao'] ?></td>
+                <td><?= $produto['categoria_nome'] ?></td>
                 <td>
                     <form action="remover-produto.php?>" method="post">
                         <input type="hidden" name="id" value="<?= $produto['id'] ?>">
