@@ -10,18 +10,8 @@ include("header.php");
 include("logica-usuario.php");
 
 
-function mostraAlerta($tipo)
-{
-    if (isset($_SESSION[$tipo])) {
-        ?>
-        <p class="alert alert-<?= $tipo ?>"><?= $_SESSION[$tipo] ?>!</p>
-        <?php
-        unset($_SESSION[$tipo]);
-    }
-}
 
 ?>
-
     <h1>
         Bem vindo!
     </h1>
