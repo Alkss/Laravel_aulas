@@ -7,6 +7,7 @@
  */
 
 include("header.php");
+include("logica-usuario.php");
 if (isset($_GET['login']) && $_GET['login'] == true) {
     ?>
     <p class="alert alert-success">Logado com sucesso!</p>
@@ -16,10 +17,30 @@ if (isset($_GET['login']) && $_GET['login'] == true) {
     <p class="alert alert-danger">Usuário ou senha inválida!</p>
     <?php
 }
+if (isset($_SESSION['danger'])) {
+    ?>
+    <p class="alert alert-danger"><?= $_SESSION['danger'] ?></p>
+    <?php
+    unset($_SESSION['danger']);
+}
+if (isset($_GET['logout']) && $_GET['logout'] == true) {
+    ?>
+    <p class="alert alert-danger">Deslogado com sucesso.</p>
+    <?php
+}
 ?>
+
     <h1>
         Bem vindo!
     </h1>
+<?php
+if (usuarioEstaLogado()) {
+    ?>
+    <p class="text-success"> Você está como <?= usuarioLogado() ?>! <a href="logout.php">Deslogar</a></p>
+    <?php
+} else {
+    ?>
+
 
     <h2>Login</h2>
     <form action="login.php" method="post">
@@ -41,5 +62,6 @@ if (isset($_GET['login']) && $_GET['login'] == true) {
             </table>
         </div>
     </form>
-<?php
+    <?php
+}
 include("footer.php");

@@ -7,7 +7,9 @@
  */
 include("header.php");
 include("banco-produto.php");
+include("logica-usuario.php");
 
+verificaUsuario();
 
 $nome_produto = $_POST['nome'];
 $preco_produto = $_POST['preco'];
