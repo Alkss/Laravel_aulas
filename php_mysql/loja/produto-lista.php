@@ -33,6 +33,9 @@ if (isset($_GET['removido']) && $_GET['removido'] == "true") {
                         <button class="btn btn-danger">remover</button>
                     </form>
                 </td>
+                <td>
+                    <a href="produto-altera-formulario.php?id=<?= $produto['id'] ?>" class="btn btn-primary">Alterar</a>
+                </td>
             </tr>
             <?php
         }
