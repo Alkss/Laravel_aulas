@@ -5,6 +5,8 @@
  * Date: 24/12/18
  * Time: 00:54
  */
+
+require_once("conecta.php");
 function listaProdutos($conexao)
 {
     $produtos = array();
@@ -38,6 +40,6 @@ function buscaProduto($conexao, $id)
 
 function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado)
 {
-    echo $query = "UPDATE produtos SET nome='{$nome}', preco={$preco}, descricao='{$descricao}', categoria_id={$categoria_id}, usado={$usado} WHERE id={$id}";
+    $query = "UPDATE produtos SET nome='{$nome}', preco={$preco}, descricao='{$descricao}', categoria_id={$categoria_id}, usado={$usado} WHERE id={$id}";
     return mysqli_query($conexao, $query);
 }

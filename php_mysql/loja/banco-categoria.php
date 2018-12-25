@@ -5,6 +5,8 @@
  * Date: 24/12/18
  * Time: 01:43
  */
+require_once("conecta.php");
+
 
 function listaCategoria($conexão)
 {

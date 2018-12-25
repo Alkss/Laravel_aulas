@@ -6,7 +6,7 @@
  * Time: 17:15
  */
 
-include("logica-usuario.php");
+require_once("logica-usuario.php");
 
 deslogar();
 $_SESSION['success'] = "Deslogado com sucesso";

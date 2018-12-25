@@ -5,9 +5,9 @@
  * Date: 24/12/18
  * Time: 01:01
  */
-include("conecta.php");
-include("banco-produto.php");
-include("logica-usuario.php");
+require_once("header.php");
+require_once("banco-produto.php");
+require_once("logica-usuario.php");
 
 $id = $_POST['id'];
 removeProduto($conexao, $id);

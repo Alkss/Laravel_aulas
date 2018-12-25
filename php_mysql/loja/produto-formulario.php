@@ -5,10 +5,9 @@
  * Date: 24/12/18
  * Time: 00:03
  */
-include("header.php");
-include("conecta.php");
-include("banco-categoria.php");
-include("logica-usuario.php");
+require_once("header.php");
+require_once("banco-categoria.php");
+require_once("logica-usuario.php");
 
 verificaUsuario();
 

@@ -5,9 +5,8 @@
  * Date: 24/12/18
  * Time: 00:39
  */
-include("header.php");
-include("conecta.php");
-include("banco-produto.php");
+require_once("header.php");
+require_once("banco-produto.php");
 
 
 ?>
