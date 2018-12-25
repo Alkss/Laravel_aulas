@@ -19,6 +19,19 @@ function mostraAlerta($tipo)
         unset($_SESSION[$tipo]);
     }
 }
+
+
+if (isset($_SESSION['success'])) {
+    ?>
+    <?php
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['danger'])) {
+    ?>
+    <p class="alert alert-danger"><?= $_SESSION['danger'] ?></p>
+    <?php
+    unset($_SESSION['danger']);
+}
 ?>
 
     <h1>
