@@ -5,7 +5,6 @@
  * Date: 24/12/18
  * Time: 01:01
  */
-include("header.php");
 include("conecta.php");
 include("banco-produto.php");
 

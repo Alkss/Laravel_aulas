@@ -7,19 +7,39 @@
  */
 
 include("header.php");
+if (isset($_GET['login']) && $_GET['login'] == true) {
+    ?>
+    <p class="alert alert-success">Logado com sucesso!</p>
+    <?php
+} else if (isset($_GET['login']) && $_GET['login'] == false) {
+    ?>
+    <p class="alert alert-danger">Usuário ou senha inválida!</p>
+    <?php
+}
 ?>
     <h1>
         Bem vindo!
     </h1>
 
-    <form action="index.php" method="get">
-        <button class="btn btn-secondary" name="form1" value="bt1">BT1</button>
-        <button class="btn btn-primary" name="form2" value="bt2">BT2</button>
-
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <td> Email</td>
+                    <td><input class="form-control" type="email" name="email"</td>
+                </tr>
+                <tr>
+                    <td>Senha</td>
+                    <td><input class="form-control" type="password" name="senha"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary">Logar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
-
-    <form action="index.php" method="get">
-    </form>
-
 <?php
 include("footer.php");
