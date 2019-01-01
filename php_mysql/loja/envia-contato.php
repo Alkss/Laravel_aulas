@@ -1,17 +1,8 @@
 <?php
-ini_set('display_errors',1);
-ini_set('display_startup_erros',1);
-
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 25/12/18
- * Time: 18:20
- */
 session_start();
-$nome = "teste";
-$email = "teste";
-$mensagem = "teste";
+$nome = $_POST["nome"];
+$email = $_POST["email"];
+$mensagem = $_POST["mensagem"];
 
 require_once("PHPMailerAutoload.php");
 
@@ -21,26 +12,20 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = "alexrjrjr@gmail.com";
-$mail->Password = "d61b2^>^";
+$mail->Username = "alura.php.e.mysql@gmail.com";
+$mail->Password = "123456";
 
-$mail->setFrom("alexrjrjr@gmail.com", "Alura Curso PHP e MySQL");
-$mail->addAddress("alkss_fjv@yahoo.com.br");
+$mail->setFrom("alura.php.e.mysql@gmail.com", "Alura Curso PHP e MySQL");
+$mail->addAddress("alura.php.e.mysql@gmail.com");
 $mail->Subject = "Email de contato da loja";
 $mail->msgHTML("<html>de: {$nome}<br/>email: {$email}<br/>mensagem: {$mensagem}</html>");
 $mail->AltBody = "de: {$nome}\nemail:{$email}\nmensagem: {$mensagem}";
 
-$mail->SMTPOptions = array(
-    'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-    ));
 if($mail->send()) {
-    $_SESSION["success"] = "Mensagem enviada com sucesso";
-    header("Location: index.php");
+	$_SESSION["success"] = "Mensagem enviada com sucesso";
+	header("Location: index.php");
 } else {
-    $_SESSION["danger"] = "Erro ao enviar mensagem " . $mail->ErrorInfo;
-    header("Location: contato.php");
+	$_SESSION["danger"] = "Erro ao enviar mensagem " . $mail->ErrorInfo;
+	header("Location: contato.php");
 }
 die();

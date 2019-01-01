@@ -1,40 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 24/12/18
- * Time: 00:39
- */
-require_once("header.php");
-require_once("banco-produto.php");
-
-
+require_once("cabecalho.php");
 ?>
 
-    <table class="table table-striped table-bordered">
-        <?php
-        $produtos = listaProdutos($conexao);
-        foreach ($produtos as $produto) {
-            ?>
-            <tr>
-                <td><?= $produto['nome'] ?></td>
-                <td><?= $produto['preco'] ?></td>
-                <td><?= $produto['descricao'] ?></td>
-                <td><?= $produto['categoria_nome'] ?></td>
-                <td>
-                    <form action="remover-produto.php?>" method="post">
-                        <input type="hidden" name="id" value="<?= $produto['id'] ?>">
-                        <button class="btn btn-danger">remover</button>
-                    </form>
-                </td>
-                <td>
-                    <a href="produto-altera-formulario.php?id=<?= $produto['id'] ?>" class="btn btn-primary">Alterar</a>
-                </td>
-            </tr>
-            <?php
-        }
-        ?>
-    </table>
+<table class="table table-striped table-bordered">
+	<?php
+	$produtoDao = new ProdutoDao($conexao);
+	$produtos = $produtoDao->listaProdutos();
+	foreach($produtos as $produto) :
+	?>
+		<tr>
+			<td><?= $produto->getNome() ?></td>
+			<td><?= $produto->getPreco() ?></td>
+			<td><?= $produto->calculaImposto() ?></td>
+			<td><?= substr($produto->getDescricao(), 0, 40) ?></td>
+			<td><?= $produto->getCategoria()->getNome() ?></td>
+			<td>
+				<?php 
+					if ($produto->temIsbn()) {
+						echo "ISBN: ".$produto->getIsbn();
+					}
+				?>
+			</td>
+			<td>
+				<a class="btn btn-primary" 
+					href="produto-altera-formulario.php?id=<?=$produto->getId()?>">
+					alterar
+				</a>
+			</td>
+			<td>
+				<form action="remove-produto.php" method="post">
+					<input type="hidden" name="id" value="<?=$produto->getId()?>">
+					<button class="btn btn-danger">remover</button>
+				</form>
+			</td>
+		</tr>
+	<?php
+	endforeach
+	?>	
+</table>
 
-<?php
-include("footer.php");
+<?php include("rodape.php"); ?>

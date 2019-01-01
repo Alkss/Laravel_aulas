@@ -1,39 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 25/12/18
- * Time: 01:20
- */
+require_once("cabecalho.php");
 
-require_once("header.php");
-require_once("banco-categoria.php");
-require_once("banco-produto.php");
-
+$produtoDao = new ProdutoDao($conexao);
+$categoriaDao = new CategoriaDao($conexao);
 
 $id = $_GET['id'];
-$produto = buscaProduto($conexao, $id);
-$categorias = listaCategoria($conexao);
+$produto = $produtoDao->buscaProduto($id);
+$categorias = $categoriaDao->listaCategorias();
 
-$usado = $produto['usado'] ? "checked='checked'" : "";
+$selecao_usado = $produto->isUsado() ? "checked='checked'" : "";
+$produto->setUsado($selecao_usado);
 
-$categorias = listaCategoria($conexao);
 ?>
-    <form action="altera-produto.php" method="post">
-        <table class="table">
-            <input type="hidden" name="id" value="<?= $produto['id'] ?>"
-            
-            
-            <?php include("produto-formulario-base.php"); ?>
 
-            <tr>
-                <td><input class="btn btn-primary" type="submit" value="Confirmar">
-                </td>
-            </tr>
-        </table>
+<h1>Alterando produto</h1>
+<form action="altera-produto.php" method="post">
+	<input type="hidden" name="id" value="<?=$produto->getId()?>">
+	<table class="table">
+		<?php include("produto-formulario-base.php"); ?>
+		<tr>
+			<td>
+				<button class="btn btn-primary" type="submit">Alterar</button>
+			</td>
+		</tr>
+	</table>
+</form>
 
-
-    </form>
-
-<?php
-include("footer.php");
+<?php include("rodape.php"); ?>

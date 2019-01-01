@@ -1,49 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 22/12/18
- * Time: 22:13
- */
-
-require_once("header.php");
+require_once("cabecalho.php");
 require_once("logica-usuario.php");
-
-
-
 ?>
-    <h1>
-        Bem vindo!
-    </h1>
+
+<h1>Bem vindo!</h1>
+
 <?php
-if (usuarioEstaLogado()) {
-    ?>
-    <p class="text-success"> Você está como <?= usuarioLogado() ?>! <a href="logout.php">Deslogar</a></p>
-    <?php
+if(usuarioEstaLogado()) {
+?>
+	<p class="text-success">Você está logado como <?= usuarioLogado() ?>. <a href="logout.php">Deslogar</a></p>
+<?php
 } else {
-    ?>
-
-
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <div class="container">
-            <table class="table">
-                <tr>
-                    <td> Email</td>
-                    <td><input class="form-control" type="email" name="email"</td>
-                </tr>
-                <tr>
-                    <td>Senha</td>
-                    <td><input class="form-control" type="password" name="senha"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="btn btn-primary">Logar</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </form>
-    <?php
+?>
+	<h2>Login</h2>
+	<form action="login.php" method="post">
+		<table class="table">
+			<tr>
+				<td>Email</td>
+				<td><input class="form-control" type="email" name="email"></td>
+			</tr>
+			<tr>
+				<td>Senha</td>
+				<td><input class="form-control" type="password" name="senha"></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-primary">Login</button></td>
+			</tr>
+		</table>
+	</form>
+<?php
 }
-include("footer.php");
+?>
+
+<?php include("rodape.php"); ?>

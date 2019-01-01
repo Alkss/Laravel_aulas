@@ -1,21 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 24/12/18
- * Time: 01:43
- */
 require_once("conecta.php");
 
+function listaCategorias($conexao) {
 
-function listaCategoria($conexão)
-{
-    $categorias = array();
-    $query = "SELECT * FROM categorias";
-    $resultado = mysqli_query($conexão, $query);
-    while ($categoria = mysqli_fetch_assoc($resultado)) {
-        array_push($categorias, $categoria);
-    }
-    
-    return $categorias;
+	$categorias = array();
+	$query = "select * from categorias";
+	$resultado = mysqli_query($conexao, $query);
+
+	while($categoria_array = mysqli_fetch_assoc($resultado)) {
+
+		$categoria = new Categoria();
+		$categoria->setId($categoria_array['id']);
+		$categoria->setNome($categoria_array['nome']);
+
+		array_push($categorias, $categoria);
+	}
+
+	return $categorias;
 }

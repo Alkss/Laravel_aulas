@@ -1,36 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 25/12/18
- * Time: 01:34
- */
-require_once("header.php");
-require_once("banco-produto.php");
+require_once("cabecalho.php");
 
-
-$id = $_POST['id'];
-$nome_produto = $_POST['nome'];
-$preco_produto = $_POST['preco'];
-$descricao = $_POST['descricao'];
+$tipoProduto = $_POST['tipoProduto'];
+$produto_id = $_POST['id'];
 $categoria_id = $_POST['categoria_id'];
 
-if (isset($_POST['usado'])) {
-    $usado = 'true';
+$factory = new ProdutoFactory();
+$produto = $factory->criaPor($tipoProduto, $_POST);
+$produto->atualizaBaseadoEm($_POST);
+
+$produto->setId($produto_id);
+$produto->getCategoria()->setId($categoria_id);
+
+if(array_key_exists('usado', $_POST)) {
+	$produto->setUsado("true");
 } else {
-    $usado = 'false';
+	$produto->setUsado("false");
 }
 
-include("conecta.php");
-if (alteraProduto($conexao, $id, $nome_produto, $preco_produto, $descricao, $categoria_id, $usado)) {
-    ?>
-    <p class="alert-sucess">Produto <?= $nome_produto ?> alterado com sucesso!</p>
-    <?php
+$produtoDao = new ProdutoDao($conexao);
+
+if($produtoDao->alteraProduto($produto)) { ?>
+	<p class="text-success">O produto <?= $produto->getNome() ?>, <?= $produto->getPreco() ?> foi alterado.</p>
+<?php 
 } else {
-    $error = mysqli_error($conexao);
-    ?>
-    <p class="alert-danger">Deu erro: <?= $error ?></p>
-    <?php
-};
-include("footer.php");
+	$msg = mysqli_error($conexao);
 ?>
+	<p class="text-danger">O produto <?= $produto->getNome() ?> não foi alterado: <?= $msg?></p>
+<?php
+}
+?>
+
+<?php include("rodape.php"); ?>
