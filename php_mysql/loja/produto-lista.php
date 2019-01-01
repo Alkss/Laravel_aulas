@@ -1,5 +1,5 @@
 <?php
-require_once("cabecalho.php");
+require_once("header.php");
 ?>
 
 <table class="table table-striped table-bordered">
@@ -39,4 +39,4 @@ require_once("cabecalho.php");
 	?>	
 </table>
 
-<?php include("rodape.php"); ?>
+<?php include("footer.php"); ?>

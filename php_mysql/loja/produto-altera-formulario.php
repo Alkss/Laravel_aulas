@@ -1,5 +1,5 @@
 <?php
-require_once("cabecalho.php");
+require_once("header.php");
 
 $produtoDao = new ProdutoDao($conexao);
 $categoriaDao = new CategoriaDao($conexao);
@@ -26,4 +26,4 @@ $produto->setUsado($selecao_usado);
 	</table>
 </form>
 
-<?php include("rodape.php"); ?>
+<?php include("footer.php"); ?>

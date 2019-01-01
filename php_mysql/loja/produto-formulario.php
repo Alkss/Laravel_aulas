@@ -1,5 +1,5 @@
 <?php
-require_once("cabecalho.php");
+require_once("header.php");
 require_once("logica-usuario.php");
 
 verificaUsuario();
@@ -7,7 +7,7 @@ verificaUsuario();
 $categoria = new Categoria();
 $categoria->setId(1);
 
-$produto = new Produto("", "", "", $categoria, "");
+$produto = new LivroFisico("", "", "", $categoria, "");
 
 $categoriaDao = new CategoriaDao($conexao);
 
@@ -29,4 +29,4 @@ $categorias = $categoriaDao->listaCategorias();
 	</table>
 </form>
 
-<?php include("rodape.php"); ?>
+<?php include("footer.php"); ?>

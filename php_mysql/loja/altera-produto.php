@@ -1,5 +1,5 @@
 <?php
-require_once("cabecalho.php");
+require_once("header.php");
 
 $tipoProduto = $_POST['tipoProduto'];
 $produto_id = $_POST['id'];
@@ -31,4 +31,4 @@ if($produtoDao->alteraProduto($produto)) { ?>
 }
 ?>
 
-<?php include("rodape.php"); ?>
+<?php include("footer.php"); ?>

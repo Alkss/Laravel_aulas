@@ -1,5 +1,5 @@
 <?php 
-require_once("cabecalho.php");
+require_once("header.php");
 require_once("logica-usuario.php");
 
 verificaUsuario();
@@ -32,4 +32,4 @@ if($produtoDao->insereProduto($produto)) { ?>
 }
 ?>
 
-<?php include("rodape.php"); ?>
+<?php include("footer.php"); ?>
